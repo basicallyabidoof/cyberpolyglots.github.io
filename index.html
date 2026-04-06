@@ -20,6 +20,7 @@
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#activities">Activities</a></li>
+                <li><a href="#polyglot-ctf">Polyglot CTF</a></li>
                 <li><a href="#events">Events</a></li>
                 <li><a href="#cfp">CFP</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -37,16 +38,32 @@
             <h2>Activities</h2>
             <div class="activity-grid">
                 <div class="activity-card">
-                    <h3>Hacker Peligro</h3>
-                    <p>A Hacker Jeopardy-style competition where Lintile will challenge you to translate key technical words within your answers.</p>
+                    <h3>Multilingual OSINT Puzzles</h3>
+                    <p>Test your investigative skills by navigating foreign social media networks—such as Weibo or regional Telegram channels—to track down targets, geolocate photos, and capture flags.<br><br><i>(Note: Dedicated devices will be provided at the village so attendees can participate without needing to create personal accounts on these platforms.)</i></p>
                 </div>
                 <div class="activity-card">
-                    <h3>Networking Sessions</h3>
-                    <p>Connect and share experiences with other polyglots in the cybersecurity community.</p>
+                    <h3>Open-Source Translation Sprints (Localization Hackathon)</h3>
+                    <p>Help make cybersecurity knowledge accessible globally! Organizations like OWASP are always looking for native speakers to translate critical documentation. Spend some time at our village translating these resources into your native language. Any Pull Requests (PRs) submitted during the sprint will use a special template highlighting the community volunteer work done right here at SecretCon.</p>
                 </div>
                 <div class="activity-card">
-                    <h3>Threat Actor Research</h3>
-                    <p>Collaborative multi-lingual research sessions focusing on threat actors, analyzing primary sources in their native tongues.</p>
+                    <h3>Cultural Social Engineering (Phishing localized)</h3>
+                    <p>Host a workshop analyzing real-world phishing emails from different regions. Discuss how attackers use local slang, cultural nuances, and regional authorities (like a specific country's tax agency) to trick victims, and have participants try drafting hyper-localized phishing lures.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="polyglot-ctf">
+            <h2>Polyglot CTF</h2>
+            <div class="activity-grid">
+                <div class="activity-card" style="grid-column: 1 / -1;">
+                    <h3>Threat Intel Challenges: Unmasking the Actor</h3>
+                    <p>Analyze sample logs and datasets to attribute threat actors to their region of origin based on linguistic and cultural artifacts. Put your analytical skills to the test across several domains:</p>
+                    <ul style="text-align: left; margin-top: 10px; padding-left: 20px;">
+                        <li style="margin-bottom: 5px;"><strong>Web & Infrastructure:</strong> Spot Cyrillic characters in HTML, analyze meta tags, check charset declarations, and hunt through Shodan or Certificate Transparency (CT) logs for non-English language in SSL cert fields.</li>
+                        <li style="margin-bottom: 5px;"><strong>Phishing & Social Engineering:</strong> Identify ESL (English as a Second Language) phrasing patterns and cultural markers, such as writing "Dear Mr. Sam," leaving days of the week uncapitalized, or using awkward syntax like "receive your approval" instead of "hear back from you."</li>
+                        <li style="margin-bottom: 5px;"><strong>Malware Analysis:</strong> Dig into the code to find error strings in specific languages, file paths or registry keys using non-Latin characters, and timestamp compilations that denote foreign working hours.</li>
+                        <li><strong>OPSEC Failures:</strong> Track down infrastructure regions through mixed-language use in emails, domain registration details, and localized SSL certificates.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -55,17 +72,24 @@
             <h2>Upcoming Events</h2>
             <div class="event-list">
                 <div class="event-card">
-                    <img src="images/cyphercon.png" alt="CypherCon 9 Logo" class="event-logo">
-                    <div>
-                        <h3>CypherCon 9</h3>
-                        <p>April 1-2, Milwaukee WI</p>
-                    </div>
-                </div>
-                <div class="event-card">
                     <img src="images/SecretCon Logo.webp" alt="SecretCon Logo" class="event-logo">
                     <div>
                         <h3>SecretCon</h3>
                         <p>June 4-5, Minneapolis MN</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="past-events">
+            <h2>Past Events</h2>
+            <div class="event-list">
+                <div class="event-card">
+                    <img src="images/cyphercon.png" alt="CypherCon 9 Logo" class="event-logo">
+                    <div>
+                        <h3>CypherCon 9</h3>
+                        <p>April 1-2, Milwaukee WI</p>
+                        <p><em>*The Birth of CyberPolyglot Village*</em></p>
                     </div>
                 </div>
             </div>
@@ -79,9 +103,7 @@
 
         <section id="contact">
             <h2>Join Us</h2>
-            <p>Connect with us on our platforms and become part of the growing Cyberpolyglots community.</p>
-            <a href="#" class="btn">Discord</a>
-            <a href="#" class="btn">Twitter / X</a>
+            <p>We can be found on the Discords for any future cons we'll be attending.</p>
         </section>
     </main>
 
