@@ -8,10 +8,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orbits" aria-hidden="true">
+        <span class="orbit orbit--a"></span>
+        <span class="orbit orbit--b"></span>
+        <span class="orbit orbit--c"></span>
+    </div>
+
     <header>
         <div class="container">
             <h1 class="glitch" data-text="Cyberpolyglots">Cyberpolyglots</h1>
             <p class="subtitle">Unifying Polyglots in Cybersecurity</p>
+
+            <div class="sr-only" aria-hidden="false">
+                Languages represented by the community: Albanian, Russian, English, Spanish, Italian, German, Swedish.
+            </div>
         </div>
     </header>
 
@@ -32,6 +43,12 @@
         <section id="about">
             <h2>About the Village</h2>
             <p>Welcome to the Cyberpolyglots Village! We are a community dedicated to bridging the gap between spoken languages and cybersecurity. Our mission is to unify multilingual professionals and enthusiasts, fostering global collaboration and knowledge sharing in the infosec space.</p>
+
+            <div class="quote-callout" role="note" aria-label="Cyberpolyglots mission">
+                <div class="quote-mark" aria-hidden="true">></div>
+                <p class="quote-text">Decode context. Translate intent. Share defenses across cultures.</p>
+                <p class="quote-sub">Shqip: <span class="lang-inline" lang="sq" data-lang="AL">të kuptojmë</span> &nbsp;•&nbsp; Deutsch: <span class="lang-inline" lang="de" data-lang="DE">Verstehen</span> &nbsp;•&nbsp; Svenska: <span class="lang-inline" lang="sv" data-lang="SV">försvara</span></p>
+            </div>
         </section>
 
         <section id="activities">
@@ -104,6 +121,17 @@
         <section id="contact">
             <h2>Join Us</h2>
             <p>We can be found on the Discords for any future cons we'll be attending.</p>
+
+            <div class="terminal-hint" aria-hidden="true">
+                <span class="prompt">cyberpolyglots@village:</span>
+                <span class="cmd">learn</span>
+                <span class="sep">|</span>
+                <span class="cmd">traducir</span>
+                <span class="sep">|</span>
+                <span class="cmd">difendere</span>
+                <span class="sep">|</span>
+                <span class="cmd">защищать</span>
+            </div>
         </section>
     </main>
 
