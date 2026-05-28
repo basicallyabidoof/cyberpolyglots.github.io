@@ -84,15 +84,15 @@ body {
     width: 90%;
     max-width: 1000px;
     margin: auto;
-    overflow: hidden;
     padding: 0 20px;
 }
 
 header {
     background: #161b22;
     color: #fff;
-    padding-top: 50px;
-    min-height: 150px;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    min-height: 220px;
     border-bottom: 1px solid #30363d;
     text-align: center;
 }
@@ -109,9 +109,14 @@ header .subtitle {
 }
 
 nav {
-    background: #0d1117;
+    background: rgba(13, 17, 23, 0.85);
     border-bottom: 1px solid #30363d;
     padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 nav ul {
@@ -131,9 +136,32 @@ nav a {
     text-decoration: none;
     font-size: 1.1rem;
     transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--accent-color);
+    transition: width 0.25s ease;
 }
 
 nav a:hover {
+    color: var(--accent-color);
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+nav a.active {
     color: var(--accent-color);
 }
 
@@ -194,6 +222,7 @@ h2 {
     border-bottom: 2px dashed #30363d;
     padding-bottom: 10px;
     margin-top: 0;
+    text-shadow: 0 0 20px rgba(88, 166, 255, 0.35);
 }
 
 .btn {
@@ -233,6 +262,7 @@ h2 {
 .activity-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-color);
+    box-shadow: 0 0 24px rgba(88, 166, 255, 0.18);
 }
 
 /* Sponsorship tiers */
@@ -321,6 +351,13 @@ h2 {
     padding: 20px;
     border: 1px solid #30363d;
     border-radius: 6px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 24px rgba(88, 166, 255, 0.18);
 }
 
 .event-logo {
@@ -515,10 +552,135 @@ footer {
     100% { clip: rect(9px, 9999px, 99px, 0); }
 }
 
+/* Scan line */
+.scan-line {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 229, 255, 0.2), rgba(88, 166, 255, 0.35), rgba(0, 229, 255, 0.2), transparent);
+    animation: scan 14s linear infinite;
+    pointer-events: none;
+    z-index: 200;
+}
+
+@keyframes scan {
+    0%   { top: 0;    opacity: 0; }
+    4%   { opacity: 0.8; }
+    96%  { opacity: 0.8; }
+    100% { top: 100vh; opacity: 0; }
+}
+
+/* Language ticker */
+.lang-ticker {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(48, 54, 61, 0.7);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.lang-ticker-inner {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll 30s linear infinite;
+    white-space: nowrap;
+}
+
+.lang-ticker-inner span {
+    display: inline-block;
+    padding: 0 22px;
+    color: rgba(88, 166, 255, 0.55);
+    font-size: 0.82rem;
+    letter-spacing: 0.07em;
+}
+
+.lang-ticker-inner span::after {
+    content: '•';
+    margin-left: 22px;
+    color: rgba(48, 54, 61, 0.9);
+}
+
+@keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Typing cursor */
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--accent-color);
+    margin-left: 3px;
+    vertical-align: text-bottom;
+    animation: cursor-blink 0.75s step-end infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* Card stagger entrance */
+@keyframes card-enter {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-enter {
+    animation: card-enter 0.45s ease both;
+}
+
+/* Mobile nav */
+@media (max-width: 640px) {
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px 0;
+    }
+    nav li {
+        display: inline;
+        padding: 0 10px;
+    }
+    nav a {
+        font-size: 0.9rem;
+    }
+}
+
+/* Scroll reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
     .lang-chip::after,
-    .orbit {
+    .orbit,
+    .scan-line,
+    .lang-ticker-inner,
+    .typing-cursor {
         animation: none !important;
+    }
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .card-enter {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 }

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="scan-line" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
     <div class="bg-orbits" aria-hidden="true">
         <span class="orbit orbit--a"></span>
@@ -22,6 +23,31 @@
 
             <div class="sr-only" aria-hidden="false">
                 Languages represented by the community: Albanian, Russian, English, Spanish, Italian, German, Swedish.
+            </div>
+
+            <div class="lang-ticker" aria-hidden="true">
+                <div class="lang-ticker-inner">
+                    <span>cybersecurity</span>
+                    <span>ciberseguridad</span>
+                    <span>Cybersicherheit</span>
+                    <span>cybersécurité</span>
+                    <span>кибербезопасность</span>
+                    <span>sicurezza informatica</span>
+                    <span>网络安全</span>
+                    <span>siber güvenlik</span>
+                    <span>ασφάλεια στον κυβερνοχώρο</span>
+                    <span>cyberbezpieczeństwo</span>
+                    <span>cybersecurity</span>
+                    <span>ciberseguridad</span>
+                    <span>Cybersicherheit</span>
+                    <span>cybersécurité</span>
+                    <span>кибербезопасность</span>
+                    <span>sicurezza informatica</span>
+                    <span>网络安全</span>
+                    <span>siber güvenlik</span>
+                    <span>ασφάλεια στον κυβερνοχώρο</span>
+                    <span>cyberbezpieczeństwo</span>
+                </div>
             </div>
         </div>
     </header>
@@ -137,8 +163,7 @@
                     <div>
                         <h3>CypherCon 9</h3>
                         <p>April 1-2, Milwaukee WI</p>
-                        <p><em>*The Birth of CyberPolyglot Village*</em></p>
-                        <p><strong>Sponsorship:</strong> Seeking sponsors — <a href="sponsorship.html" class="btn" style="margin-top: 8px;">view tiers</a></p>
+                        <p><em>The birth of the Cyberpolyglots Village.</em></p>
                     </div>
                 </div>
             </div>
@@ -183,5 +208,67 @@
             <p>&copy; 2026 Cyberpolyglots. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Typewriter effect on subtitle
+        const subtitle = document.querySelector('header .subtitle');
+        const fullText = subtitle.textContent.trim();
+        subtitle.textContent = '';
+        const cursor = document.createElement('span');
+        cursor.className = 'typing-cursor';
+        subtitle.appendChild(cursor);
+        let charIndex = 0;
+        setTimeout(() => {
+            const typeInterval = setInterval(() => {
+                if (charIndex < fullText.length) {
+                    subtitle.insertBefore(document.createTextNode(fullText[charIndex]), cursor);
+                    charIndex++;
+                } else {
+                    clearInterval(typeInterval);
+                    setTimeout(() => cursor.remove(), 2200);
+                }
+            }, 42);
+        }, 350);
+
+        // Scroll reveal + staggered card entrance
+        const revealEls = Array.from(document.querySelectorAll('main section'));
+        revealEls.forEach(el => el.classList.add('reveal'));
+
+        function checkReveal() {
+            const vpBottom = window.scrollY + window.innerHeight;
+            revealEls.forEach(el => {
+                if (el.classList.contains('visible')) return;
+                const top = el.getBoundingClientRect().top + window.scrollY;
+                if (vpBottom > top + 60) {
+                    el.classList.add('visible');
+                    el.querySelectorAll('.activity-card, .event-card').forEach((card, i) => {
+                        card.style.animationDelay = `${i * 90}ms`;
+                        card.classList.add('card-enter');
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal, { passive: true });
+        checkReveal(); // run once on load
+
+        // Active nav highlighting
+        const sections = Array.from(document.querySelectorAll('main section[id]'));
+        const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+
+        function updateActiveNav() {
+            const scrollMid = window.scrollY + window.innerHeight * 0.4;
+            let current = sections[0];
+            sections.forEach(s => {
+                if (s.getBoundingClientRect().top + window.scrollY <= scrollMid) current = s;
+            });
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current?.id);
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav, { passive: true });
+        updateActiveNav();
+    </script>
 </body>
 </html>
