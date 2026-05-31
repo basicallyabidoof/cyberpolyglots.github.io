@@ -128,7 +128,7 @@ nav ul {
 
 nav li {
     display: inline;
-    padding: 0 20px;
+    padding: 0 13px;
 }
 
 nav a {
@@ -377,13 +377,51 @@ h2 {
     color: var(--text-color);
 }
 
+/* Community links row (Join Us section) */
+.community-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 18px 0;
+}
+
+.community-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.community-btn-icon {
+    font-size: 1rem;
+}
+
 footer {
     background: #161b22;
     color: #8b949e;
     text-align: center;
-    padding: 20px;
+    padding: 24px 20px 20px;
     margin-top: 20px;
     border-top: 1px solid #30363d;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-sep {
+    margin: 0 10px;
+    color: var(--border-color);
 }
 
 /* Polyglot language rail */
